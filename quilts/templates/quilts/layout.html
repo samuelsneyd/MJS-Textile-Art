@@ -1,0 +1,58 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static "css/output.css" %}">
+    <title>MJS Textile Art</title>
+  </head>
+  <body>
+    <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
+      <div class="flex-1 flex justify-between items-center">
+        <a href="/">MJS Textile Art</a>
+      </div>
+
+      <label for="menu-toggle" class="pointer-cursor lg:hidden block">
+        <svg class="fill-current text-gray-900" width="20" height="20"
+             viewBox="0 0 20 20">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+        </svg>
+      </label>
+      <input class="hidden" type="checkbox" id="menu-toggle"/>
+
+      <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+        <nav>
+          <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
+            <li>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/">Home</a>
+            </li>
+            <li>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/gallery">Gallery</a>
+            </li>
+            <li>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/about">About</a>
+            </li>
+            <li>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/resume">Resume</a>
+            </li>
+            <li>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/links">Links</a>
+            </li>
+            <li>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/classes">Classes</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    {% block body %}
+    {% endblock %}
+
+  </body>
+</html>
