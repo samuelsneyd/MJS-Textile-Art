@@ -1,5 +1,13 @@
 from django.urls import path
-from .views import IndexView, AboutView, GalleryView, ResumeView, LinksView, ClassesView
+from .views import (
+    IndexView,
+    AboutView,
+    GalleryView,
+    ResumeView,
+    LinksView,
+    ClassesView,
+    ContactView,
+)
 
 app_name = "quilts"
 
@@ -10,4 +18,5 @@ urlpatterns = [
     path("resume/", ResumeView.as_view(), name="resume"),
     path("links/", LinksView.as_view(), name="links"),
     path("classes/", ClassesView.as_view(), name="classes"),
+    path("contact/", ContactView.as_view(), name="contact"),
 ]

@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="{% static "css/output.css" %}">
     <title>MJS Textile Art</title>
   </head>
-  <body>
+  <body class="h-14 bg-slate-100">
     <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
       <div class="flex-1 flex justify-between items-center">
-        <a href="/">MJS Textile Art</a>
+        <a href="/" class="border-b-2 border-transparent hover:border-blue-400">MJS Textile Art</a>
       </div>
 
       <label for="menu-toggle" class="pointer-cursor lg:hidden block">
@@ -29,30 +29,40 @@
         <nav>
           <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
             <li>
-              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/">Home</a>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-blue-400" href="/">Home</a>
             </li>
             <li>
-              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/gallery">Gallery</a>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-blue-400" href="/gallery">Gallery</a>
             </li>
             <li>
-              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/about">About</a>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-blue-400" href="/about">About</a>
             </li>
             <li>
-              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/resume">Resume</a>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-blue-400" href="/resume">Resume</a>
             </li>
             <li>
-              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/links">Links</a>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-blue-400" href="/links">Links</a>
             </li>
             <li>
-              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="/classes">Classes</a>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-blue-400" href="/classes">Classes</a>
+            </li>
+            <li>
+              <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-blue-400" href="/contact">Contact</a>
             </li>
           </ul>
         </nav>
       </div>
     </header>
 
-    {% block body %}
-    {% endblock %}
+    <div class="">
+      <div class="px-4 py-6">
+        <div class="max-w-3xl bg-white rounded-lg mx-auto my-8 p-8 bg-blue-400">
+          <h1 class="text-2xl font-medium mb-2 text-center">Fabric portraiture, nudes & artworks</h1>
+        </div>
+      </div>
+    </div>
 
+      {% block body %}
+      {% endblock %}
   </body>
 </html>

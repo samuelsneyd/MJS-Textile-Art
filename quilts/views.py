@@ -1,4 +1,4 @@
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView, ListView
 from .models import Quilt
 
 
@@ -6,13 +6,25 @@ class IndexView(TemplateView):
     template_name = "quilts/index.html"
 
 
-class GalleryView(TemplateView):
+class GalleryView(ListView):
+    model = Quilt
+    context_object_name = "quilts"
     template_name = "quilts/gallery.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["quilts"] = Quilt.objects.all()
-        return context
+    def get_queryset(self):
+        query_type = self.request.GET.get("type")
+        query_status = self.request.GET.get("status")
+
+        if query_type is not None and query_status is not None:
+            return Quilt.objects.filter(type=query_type, status=query_status)
+
+        if query_type is not None:
+            return Quilt.objects.filter(type=query_type)
+
+        if query_status is not None:
+            return Quilt.objects.filter(status=query_status)
+
+        return Quilt.objects.all()
 
 
 class AboutView(TemplateView):
@@ -29,3 +41,7 @@ class LinksView(TemplateView):
 
 class ClassesView(TemplateView):
     template_name = "quilts/classes.html"
+
+
+class ContactView(TemplateView):
+    template_name = "quilts/contact.html"
