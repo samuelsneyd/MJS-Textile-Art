@@ -12,17 +12,24 @@ class GalleryView(ListView):
     template_name = "quilts/gallery.html"
 
     def get_queryset(self):
-        query_type = self.request.GET.get("type")
-        query_status = self.request.GET.get("status")
+        try:
+            query_types = self.request.GET.get("type").upper().split(" ")
+        except AttributeError:
+            query_types = None
 
-        if query_type is not None and query_status is not None:
-            return Quilt.objects.filter(type=query_type, status=query_status)
+        try:
+            query_statuses = self.request.GET.get("status").upper().split(" ")
+        except AttributeError:
+            query_statuses = None
 
-        if query_type is not None:
-            return Quilt.objects.filter(type=query_type)
+        if query_types is not None and query_statuses is not None:
+            return Quilt.objects.filter(type__in=query_types, status__in=query_statuses)
 
-        if query_status is not None:
-            return Quilt.objects.filter(status=query_status)
+        if query_types is not None:
+            return Quilt.objects.filter(type__in=query_types)
+
+        if query_statuses is not None:
+            return Quilt.objects.filter(status__in=query_statuses)
 
         return Quilt.objects.all()
 
