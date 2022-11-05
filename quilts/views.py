@@ -13,25 +13,25 @@ class GalleryView(ListView):
 
     def get_queryset(self):
         try:
-            query_types = self.request.GET.get("type").upper().split(" ")
+            types = self.request.GET.get("type").upper().split(" ")
         except AttributeError:
-            query_types = None
+            types = None
 
         try:
-            query_statuses = self.request.GET.get("status").upper().split(" ")
+            statuses = self.request.GET.get("status").upper().split(" ")
         except AttributeError:
-            query_statuses = None
+            statuses = None
 
-        if query_types is not None and query_statuses is not None:
-            return Quilt.objects.filter(type__in=query_types, status__in=query_statuses)
+        if types is not None and statuses is not None:
+            queryset = Quilt.objects.filter(type__in=types, status__in=statuses)
+        elif types is not None:
+            queryset = Quilt.objects.filter(type__in=types)
+        elif statuses is not None:
+            queryset = Quilt.objects.filter(status__in=statuses)
+        else:
+            queryset = Quilt.objects.all()
 
-        if query_types is not None:
-            return Quilt.objects.filter(type__in=query_types)
-
-        if query_statuses is not None:
-            return Quilt.objects.filter(status__in=query_statuses)
-
-        return Quilt.objects.all()
+        return queryset.order_by("-pk")
 
 
 class AboutView(TemplateView):

@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
+
+MEDIA_URL = settings.MEDIA_URL.lstrip("/")
 
 
 class Quilt(models.Model):
@@ -22,7 +25,8 @@ class Quilt(models.Model):
     description = models.CharField(max_length=2048)
     type = models.CharField(max_length=24, choices=Type.choices)
     status = models.CharField(max_length=24, choices=Status.choices)
-    # image = models.ImageField(upload_to=MEDIA_URL)
+    image = models.ImageField(upload_to=MEDIA_URL)
+    # image = models.CharField(max_length=128)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
