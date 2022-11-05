@@ -18,7 +18,7 @@ class EmailView(APIView):
         data = request.data
         data["sender"] = data["email"]
         data["recipient"] = settings.RECIPIENT_EMAIL
-        data["subject"] = f'{self.subject}: {data["first_name"]} {data["last_name"]}'
+        data["subject"] = f'{self.subject}: {data["name"]}'
 
         serializer = EmailSerializer(data=data)
 
