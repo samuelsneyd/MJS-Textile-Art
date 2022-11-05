@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView, ListView, RedirectView
+from django.views.generic import TemplateView, ListView
 from .models import Quilt
 
 
@@ -9,6 +9,7 @@ class IndexView(TemplateView):
 
 class GalleryView(ListView):
     model = Quilt
+    paginate_by = 4
     context_object_name = "quilts"
     template_name = "quilts/gallery.html"
 
