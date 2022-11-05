@@ -26,9 +26,17 @@ class Quilt(models.Model):
     type = models.CharField(max_length=24, choices=Type.choices)
     status = models.CharField(max_length=24, choices=Status.choices)
     image = models.ImageField(upload_to=MEDIA_URL)
-    # image = models.CharField(max_length=128)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
+
+    def description_as_paragraphs(self):
+        return self.description.split("\n")
+
+    def get_incremented_pk(self):
+        return self.pk + 1
+
+    def get_decremented_pk(self):
+        return self.pk - 1

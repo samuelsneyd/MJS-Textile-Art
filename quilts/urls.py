@@ -7,6 +7,7 @@ from .views import (
     LinksView,
     ClassesView,
     ContactView,
+    QuiltView,
 )
 
 app_name = "quilts"
@@ -14,6 +15,8 @@ app_name = "quilts"
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("gallery/", GalleryView.as_view(), name="gallery"),
+    path("gallery/<int:pk>", QuiltView.as_view(), name="quilt"),
+    path("gallery/<str:quilt>", QuiltView.as_view(), name="quilt"),
     path("about/", AboutView.as_view(), name="about"),
     path("resume/", ResumeView.as_view(), name="resume"),
     path("links/", LinksView.as_view(), name="links"),

@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView, ListView
+from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView, ListView, RedirectView
 from .models import Quilt
 
 
@@ -32,6 +33,20 @@ class GalleryView(ListView):
             queryset = Quilt.objects.all()
 
         return queryset.order_by("-pk")
+
+
+class QuiltView(ListView):
+    model = Quilt
+    context_object_name = "quilt"
+    template_name = "quilts/quilt.html"
+
+    def get_queryset(self):
+        try:
+            title = self.kwargs["quilt"]
+            return get_object_or_404(Quilt, title=title)
+        except KeyError:
+            pk = self.kwargs["pk"]
+            return get_object_or_404(Quilt, pk=pk)
 
 
 class AboutView(TemplateView):
