@@ -9,7 +9,7 @@ class IndexView(TemplateView):
 
 class GalleryView(ListView):
     model = Quilt
-    paginate_by = 4
+    paginate_by = 12
     context_object_name = "quilts"
     template_name = "quilts/gallery.html"
 
